@@ -1,6 +1,7 @@
 const express = require ('express')
 const app = express()
 const port = 3030
+const path = require('path');
 
 const Mongoose = require ('mongoose')
 const db = Mongoose.connect
@@ -12,8 +13,9 @@ const db = Mongoose.connect
 
 
 //조가튼 바디파서
-
+app.use(express.static('build'));
 app.use(express.json());
+app.use(express.static(path.join(__dirname, '/build')));
 
 app.use(express.urlencoded({extended:false}));
 app.use(cors());
@@ -31,7 +33,11 @@ db('mongodb+srv://a:q1w2e3r4t5@cluster0.jx7be.mongodb.net/todoapp?retryWrites=tr
 
 // 이하 라우터
 
-app.get('/',todoCtrl.getTodo)
+
+app.get('/',(req,res)=>{res.sendFile(path.join(__dirname, '/build/index.html'))})
+app.get('/home',(req,res)=>{res.sendFile(path.join(__dirname, '/build/index.html'))})
+
+app.get('/data', todoCtrl.getTodo)
 
 app.post('/new', todoCtrl.saveTodo)
 
