@@ -1,7 +1,10 @@
 const express = require ('express')
 const app = express()
-const port = 3030
+const dotenv = require('dotenv');
+require('dotenv').config();
+const port = port = process.env.PORT || 3030
 const path = require('path');
+
 
 const Mongoose = require ('mongoose')
 const db = Mongoose.connect
