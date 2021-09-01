@@ -1,8 +1,8 @@
 const express = require ('express')
 const app = express()
-const dotenv = require('dotenv');
+const cors = require ('cors')
 require('dotenv').config();
-const port = port = process.env.PORT || 3030
+const port =  process.env.PORT || 3030
 const path = require('path');
 
 
@@ -12,7 +12,6 @@ const db = Mongoose.connect
  const todos = require ('./models/todos')
  const todoCtrl = require ('./controllers/todoCtrl.js')
 
- const cors = require ('cors')
 
 
 //조가튼 바디파서
