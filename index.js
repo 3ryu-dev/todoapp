@@ -36,7 +36,7 @@ Mongoose.connect('mongodb+srv://a:q1w2e3r4t5@cluster0.jx7be.mongodb.net/todoapp?
 // 이하 라우터
 
 
-app.get('/',(req,res)=>{res.sendFile(path.join(__dirname, '/build/index.html'))})
+app.get('/*',(req,res)=>{res.sendFile(path.join(__dirname, '/build/index.html'))})
 
 
 app.get('/data', todoCtrl.getTodo)
