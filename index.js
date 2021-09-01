@@ -7,7 +7,7 @@ const path = require('path');
 
 
 const Mongoose = require ('mongoose')
-const db = Mongoose.connect
+ 
 
  const todos = require ('./models/todos')
  const todoCtrl = require ('./controllers/todoCtrl.js')
@@ -26,7 +26,7 @@ app.use(cors());
 
 //몽고디비연결과 포트 열기
 
-db('mongodb+srv://a:q1w2e3r4t5@cluster0.jx7be.mongodb.net/todoapp?retryWrites=true&w=majority', {UseNewUrlParser:true})
+Mongoose.connect('mongodb+srv://a:q1w2e3r4t5@cluster0.jx7be.mongodb.net/todoapp?retryWrites=true&w=majority', {UseNewUrlParser:true})
 .catch(error => console.log(error))
 .then(() => console.log('MongoDB connected...'))
 .then(app.listen(port, () => console.log(` app listening on port ${port}!`)))
@@ -37,7 +37,7 @@ db('mongodb+srv://a:q1w2e3r4t5@cluster0.jx7be.mongodb.net/todoapp?retryWrites=tr
 
 
 app.get('/',(req,res)=>{res.sendFile(path.join(__dirname, '/build/index.html'))})
-app.get('/home',(req,res)=>{res.sendFile(path.join(__dirname, '/build/index.html'))})
+
 
 app.get('/data', todoCtrl.getTodo)
 
